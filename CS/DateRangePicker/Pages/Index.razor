@@ -1,0 +1,70 @@
+﻿@page "/"
+
+    <DxFormLayout>
+        <DxFormLayoutItem Caption="Start:" ColSpanMd="3">
+            <Template>
+                <DxDateEdit Date="@StartDate" DateChanged=@((newValue) => StartChanged(newValue))></DxDateEdit>
+            </Template>
+        </DxFormLayoutItem>
+
+        <DxFormLayoutItem Caption="End:" ColSpanMd="3">
+            <Template>
+                <DxDateEdit Date="@EndDate" DateChanged=@((newValue) => EndChanged(newValue))></DxDateEdit>
+            </Template>
+        </DxFormLayoutItem>
+
+        <DxFormLayoutItem Caption="Duration (days):" ColSpanMd="2">
+            <Template>
+                <span>@Duration</span>
+            </Template>
+        </DxFormLayoutItem>
+
+        <DxFormLayoutItem Caption="Minimum duration:" ColSpanMd="2">
+            <Template>
+                <DxSpinEdit Value=@MinDuration MinValue="0" MaxValue="10" ValueChanged=@((newValue) => MinDurationChanged(newValue))></DxSpinEdit>
+            </Template>
+        </DxFormLayoutItem>
+
+        <DxFormLayoutItem Caption="Maximum duration:" ColSpanMd="2">
+            <Template>
+                <DxSpinEdit Value=@MaxDuration  MinValue="50" MaxValue="365" ValueChanged=@((newValue) => MaxDurationChanged(newValue))></DxSpinEdit>
+            </Template>
+        </DxFormLayoutItem>
+    </DxFormLayout>
+
+@code{
+    public DateTime StartDate { get; set; } = DateTime.Today;
+    public DateTime EndDate { get; set; } = DateTime.Today.AddDays(1);
+    public string Duration { get { return EndDate.Subtract(StartDate).Days.ToString(); } }
+    public int MinDuration { get; set; } = 0;
+    public int MaxDuration { get; set; } = 50;
+
+    void StartChanged(DateTime newDate) {
+        StartDate = newDate;
+        if (EndDate.Subtract(StartDate).Days < MinDuration)
+            EndDate = StartDate.AddDays(MinDuration);
+        if (EndDate.Subtract(StartDate).Days > MaxDuration)
+            EndDate = StartDate.AddDays(MaxDuration);
+        InvokeAsync(StateHasChanged);
+    }
+    void EndChanged(DateTime newDate) {
+        EndDate = newDate;
+        if (EndDate.Subtract(StartDate).Days < MinDuration)
+            StartDate = EndDate.AddDays(-MinDuration);
+        if (EndDate.Subtract(StartDate).Days > MaxDuration)
+            StartDate = EndDate.AddDays(-MaxDuration);
+        InvokeAsync(StateHasChanged);
+    }
+    void MinDurationChanged(int newDuration) {
+        MinDuration = newDuration;
+        if (EndDate.Subtract(StartDate).Days < MinDuration)
+            EndDate = StartDate.AddDays(MinDuration);
+        InvokeAsync(StateHasChanged);
+    }
+    void MaxDurationChanged(int newDuration) {
+        MaxDuration = newDuration;
+        if (EndDate.Subtract(StartDate).Days > MaxDuration)
+            EndDate = StartDate.AddDays(MaxDuration);
+        InvokeAsync(StateHasChanged);
+    }
+}

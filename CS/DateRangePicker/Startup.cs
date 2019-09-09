@@ -46,7 +46,7 @@ namespace DateRangePicker
             app.UseRouting();
 
             app.UseEndpoints(endpoints => {
-                endpoints.MapBlazorHub<App>(selector: "app");
+                endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });
         }

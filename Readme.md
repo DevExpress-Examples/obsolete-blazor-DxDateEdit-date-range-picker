@@ -1,8 +1,6 @@
-<!-- default file list -->
 *Files to look at*:
 
 * [Index.razor](./CS/DateRangePicker/Pages/Index.razor)
-<!-- default file list end -->
 
 ### Blazor Date Edit - How to implement the date range selector
 

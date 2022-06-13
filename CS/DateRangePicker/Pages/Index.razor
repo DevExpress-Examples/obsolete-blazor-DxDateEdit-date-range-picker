@@ -1,36 +1,22 @@
 ﻿@page "/"
 
-    <DxFormLayout>
-        <DxFormLayoutItem Caption="Start:" ColSpanMd="3">
-            <Template>
-                <DxDateEdit Date="@StartDate" DateChanged=@((DateTime newValue) => StartChanged(newValue))></DxDateEdit>
-            </Template>
-        </DxFormLayoutItem>
-
-        <DxFormLayoutItem Caption="End:" ColSpanMd="3">
-            <Template>
-                <DxDateEdit Date="@EndDate" DateChanged=@((DateTime newValue) => EndChanged(newValue))></DxDateEdit>
-            </Template>
-        </DxFormLayoutItem>
-
-        <DxFormLayoutItem Caption="Duration (days):" ColSpanMd="2">
-            <Template>
-                <span>@Duration</span>
-            </Template>
-        </DxFormLayoutItem>
-
-        <DxFormLayoutItem Caption="Minimum duration:" ColSpanMd="2">
-            <Template>
-                <DxSpinEdit Value=@MinDuration MinValue="0" MaxValue="10" ValueChanged=@((int newValue) => MinDurationChanged(newValue))></DxSpinEdit>
-            </Template>
-        </DxFormLayoutItem>
-
-        <DxFormLayoutItem Caption="Maximum duration:" ColSpanMd="2">
-            <Template>
-                <DxSpinEdit Value=@MaxDuration  MinValue="50" MaxValue="365" ValueChanged=@((int newValue) => MaxDurationChanged(newValue))></DxSpinEdit>
-            </Template>
-        </DxFormLayoutItem>
-    </DxFormLayout>
+<DxFormLayout CaptionPosition="CaptionPosition.Vertical">
+    <DxFormLayoutItem Caption="Start:" ColSpanMd="3">
+        <DxDateEdit Date="@StartDate" DateChanged=@((DateTime newValue) => StartChanged(newValue))></DxDateEdit>
+    </DxFormLayoutItem>
+    <DxFormLayoutItem Caption="End:" ColSpanMd="3">
+        <DxDateEdit Date="@EndDate" DateChanged=@((DateTime newValue) => EndChanged(newValue))></DxDateEdit>
+    </DxFormLayoutItem>
+    <DxFormLayoutItem Caption="Duration (days):" ColSpanMd="2">
+        <span>@Duration</span>
+    </DxFormLayoutItem>
+    <DxFormLayoutItem Caption="Minimum duration:" ColSpanMd="2">
+        <DxSpinEdit Value=@MinDuration MinValue="0" MaxValue="10" ValueChanged=@((int newValue) => MinDurationChanged(newValue))></DxSpinEdit>
+    </DxFormLayoutItem>
+    <DxFormLayoutItem Caption="Maximum duration:" ColSpanMd="2">
+        <DxSpinEdit Value=@MaxDuration MinValue="50" MaxValue="365" ValueChanged=@((int newValue) => MaxDurationChanged(newValue))></DxSpinEdit>
+    </DxFormLayoutItem>
+</DxFormLayout>
 
 @code{
     public DateTime StartDate { get; set; } = DateTime.Today;

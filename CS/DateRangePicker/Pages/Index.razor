@@ -1,5 +1,12 @@
 ﻿@page "/"
 
+<style>
+    .my-class + * {
+        display: flex;
+        align-items: center;
+    }
+</style>
+
 <DxFormLayout CaptionPosition="CaptionPosition.Vertical">
     <DxFormLayoutItem Caption="Start:" ColSpanMd="3">
         <DxDateEdit Date="@StartDate" DateChanged=@((DateTime newValue) => StartChanged(newValue))></DxDateEdit>
@@ -7,7 +14,7 @@
     <DxFormLayoutItem Caption="End:" ColSpanMd="3">
         <DxDateEdit Date="@EndDate" DateChanged=@((DateTime newValue) => EndChanged(newValue))></DxDateEdit>
     </DxFormLayoutItem>
-    <DxFormLayoutItem Caption="Duration (days):" ColSpanMd="2">
+    <DxFormLayoutItem Caption="Duration (days):" ColSpanMd="2" CaptionCssClass="my-class">
         <span>@Duration</span>
     </DxFormLayoutItem>
     <DxFormLayoutItem Caption="Minimum duration:" ColSpanMd="2">

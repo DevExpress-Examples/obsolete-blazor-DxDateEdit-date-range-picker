@@ -5,7 +5,8 @@
 
 # Blazor Date Edit - Implement the date range selector
 
-This example illustrates how to implement the date range selection.
+This example illustrates how to implement date range selection.
+
 
 ![Date range selector](/result.png)
 

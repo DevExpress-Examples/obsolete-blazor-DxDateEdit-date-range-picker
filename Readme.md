@@ -7,16 +7,12 @@
 
 # Blazor Date Edit - Implement the date range selector
 
-This example illustrates how to implement date range selection.
+⛔ DEPRECATED. This example was deprecated. 
+
+Beginning with v24.1.3 and onward, we implemented the [Date Range Picker](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxDateRangePicker-1) editor that allows users to select date ranges. Please check the [Date Range Picker demo](https://demos.devexpress.com/blazor/DateRangePicker) for details.
 
 
-![Date range selector](/result.png)
-
-DxDateEdit components allow users to select start and end dates. The `Duration` variable displays the number of days in the selected interval. The `MinDuration`/`MaxDuration` variables specify the minimum/maximum number of days in a range.
-
-## Files to Review
-
-[Index.razor](./CS/DateRangePicker/Pages/Index.razor)
+The current repository will not be updated in the future.
 <!-- feedback -->
 ## Does this example address your development requirements/objectives?
 
